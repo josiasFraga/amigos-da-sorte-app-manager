@@ -53,11 +53,34 @@ class AppController extends Controller {
 					'fields' => array(
 						'username' => 'email',
 						'password' => 'senha'
-					)
+					),
+					'scope' => array('Usuario.role' => 'admin')
 				)
 			)
 		)
 	);
+
+    public function checkTokenExists($usuario){
+        $this->loadModel('Token');
+        $dados_token = $this->Token->find('first',array(
+            'fields' => array(
+                'Usuario.*',
+                'Token.*',
+            ),
+            'conditions' => array(
+                'Usuario.email' => $usuario,
+                'Token.validade >=' => date("Y-m-d") 
+            ),
+            'link' => array(
+                'Usuario'
+            )
+        ));
+
+        if (count($dados_token) > 0){
+            return $dados_token;
+        }
+        return false;
+    }
 
 
 	public function update_app_token( $usuario_id = null, $dados_token = null ) {

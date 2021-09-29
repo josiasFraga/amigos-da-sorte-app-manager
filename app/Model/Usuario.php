@@ -6,6 +6,9 @@ class Usuario extends AppModel {
     public $name = 'Usuario';
 
 	public $hasMany = array(
+		'Token' => array(
+			'foreignKey' => 'usuario_id'
+		),
 
 	);
 
@@ -40,20 +43,5 @@ class Usuario extends AppModel {
 		}
 	}
 
-	public function isAtivo($email = null) {
-		if (is_null($email)) return false;
-		$dados = $this->find('first', array(
-            'conditions' => array(
-                'Usuario.email' => $email
-			),
-			'fields' => array(
-				'Usuario.ativo'
-			)
-		));
-		if (!empty($dados)) {
-			return ($dados['Usuario']['ativo'] == 'Y')? true: false;
-		}
-		return false;
-	}
 
 }

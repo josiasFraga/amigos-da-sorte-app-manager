@@ -1,6 +1,5 @@
 <?php
 class Token extends AppModel {
-
 	public $useTable = 'tokens';
 
     public $name = 'Token';
@@ -10,5 +9,4 @@ class Token extends AppModel {
 			'foreignKey' => 'usuario_id'
 		)
 	);
-
 }

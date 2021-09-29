@@ -21,15 +21,40 @@ class LoginController extends AppController {
 
 		if ( $this->request->is('post') ) {
 			// die(debug($this->request->data));
-			$this->loadModel('Usuario');
-			$ativo = $this->Usuario->isAtivo($this->request->data['Usuario']['email']);
-			if ($ativo) {
-				if ($this->Auth->login()) {
+			$this->loadModel('Usuario');	
+			if ($this->Auth->login()) {
+				$token_exists = $this->checkTokenExists($this->Auth->user('email'));
+
+				$token = md5(uniqid(rand(), true));
+				$dados_salvar = array(
+					'Token' => array(
+						//'id' => $usuario['Token']['id'], 
+						'token' => $token, 
+						'validade' => date('Y-m-d', strtotime(date("Y-m-d") . ' + 30 days')), 
+						'usuario_id' => $this->Auth->user('id')
+					)
+				);
+
+				if ( $token_exists != false ) {
+					$dados_salvar = array(
+						'Token' => array(
+							'id' => $token_exists['Token']['id'], 
+							'token' => $token, 
+							'validade' => date('Y-m-d', strtotime(date("Y-m-d") . ' + 30 days')), 
+							'usuario_id' => $this->Auth->user('id')
+						)
+					);
+				}
+
+				$this->loadModel('Token');
+				if ($this->Token->save($dados_salvar)) {
+					$this->Session->write('user_token', $token);
 					return $this->routing();
 				} else {
-					$this->Session->setFlash('Usuário ou senha incorretos.', 'flash_error');
-					return $this->redirect(array('controller' => 'login', 'action' => 'entrar'));
+					$this->Session->setFlash('Erro ao gerar o token de acesso.', 'flash_error');
+					return $this->redirect($this->Auth->logout());
 				}
+
 			} else {
 				$this->Session->setFlash('Usuário ou senha incorretos.', 'flash_error');
 				return $this->redirect(array('controller' => 'login', 'action' => 'entrar'));
