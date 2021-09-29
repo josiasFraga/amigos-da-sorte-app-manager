@@ -1,0 +1,1 @@
+# amigos-da-sorte-app-manager
