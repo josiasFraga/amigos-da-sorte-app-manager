@@ -179,6 +179,7 @@ class AppController extends Controller {
 		$this->set('version', '1.0');
 		$usuario_foto = null; // $this->Auth->user('foto');
 		$usuario_nivel = $this->Auth->user('role');
+		$usuario_email = $this->Auth->user('email');
 		$favicon = 'favicon.png';
 		$logo = 'logo.png';
 
@@ -187,7 +188,7 @@ class AppController extends Controller {
 			$menu_pessoas = $this->Session->read('menu_pessoas');
 		}
 
-		$this->set(compact('usuario_foto', 'usuario_nivel', 'favicon', 'logo', 'menu_pessoas'));
+		$this->set(compact('usuario_foto', 'usuario_nivel', 'favicon', 'logo', 'menu_pessoas', 'usuario_email'));
 	}
 
 	public function dateBrEn( $data ) {

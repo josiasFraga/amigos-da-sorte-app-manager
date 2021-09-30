@@ -44,7 +44,11 @@ class UsuariosController extends AppController {
         $arr_columns_order = array(
             '',
             "Usuario.nome",
-            "Usuario.email",
+            "Usuario.pais",
+            "",
+            "",
+            "",
+            "",
             "Usuario.ativo",
         );
 
@@ -52,12 +56,28 @@ class UsuariosController extends AppController {
 
         $conditions = array_merge($conditions, array("Usuario.id !=" => '1')); // deixar de fora o cadastro do admin
 
+        if ( $this->dataTable->check_filtro("pais","text") === true){
+            $conditions = array_merge($conditions, array("Usuario.pais" => $this->request->data["pais"]));
+        }
+
         if ( $this->dataTable->check_filtro("nome","text") === true){
             $conditions = array_merge($conditions, array("Usuario.nome LIKE" => "%".$this->request->data["nome"]."%"));
         }
 
         if ( $this->dataTable->check_filtro("email","text") === true){
             $conditions = array_merge($conditions, array("Usuario.email LIKE" => "%".$this->request->data["email"]."%"));
+        }
+
+        if ( $this->dataTable->check_filtro("telefone","text") === true){
+            $conditions = array_merge($conditions, array("Usuario.telefone LIKE" => "%".$this->request->data["telefone"]."%"));
+        }
+
+        if ( $this->dataTable->check_filtro("cpf","text") === true){
+            $conditions = array_merge($conditions, array("Usuario.cpf LIKE" => "%".$this->request->data["cpf"]."%"));
+        }
+
+        if ( $this->dataTable->check_filtro("ci","text") === true){
+            $conditions = array_merge($conditions, array("Usuario.ci LIKE" => "%".$this->request->data["ci"]."%"));
         }
 
         if ( $this->dataTable->check_filtro("ativo","text") === true){
@@ -105,9 +125,11 @@ class UsuariosController extends AppController {
                 $radio = '<input type="checkbox" name="id[]" value="'.$dado['Usuario']['id'].'">';
 
                 $nome = $dado['Usuario']['nome'];
-
+                $pais = $dado['Usuario']['pais'];
                 $email = $dado['Usuario']['email'];
-
+                $telefone = $dado['Usuario']['telefone'];
+                $cpf = $dado['Usuario']['cpf'];
+                $ci = $dado['Usuario']['ci'];
                 $ativo = ($dado['Usuario']['ativo'] == 'Y')? 'Sim': 'Não';
 
                 $btn_view = ""; // '<a href="'.Router::url(array('controller' => 'Pessoas', 'action' => 'view', $dado['Pessoa']['id'])).'" class="btn btn-icon-only blue" data-toggle=""><i class="fa fa-eye"></i></a>';
@@ -118,12 +140,16 @@ class UsuariosController extends AppController {
 
                 $actions = "";
 
-                $actions = $btn_view.' '.$btn_alterar.' '.$btn_excluir;
+                //$actions = $btn_view.' '.$btn_alterar.' '.$btn_excluir;
 
                 $records["data"][] = array(
                     $radio,
                     $nome,
+                    $pais,
                     $email,
+                    $telefone,
+                    $cpf,
+                    $ci,
                     $ativo,
                     $actions
                 );

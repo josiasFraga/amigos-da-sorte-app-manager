@@ -21,16 +21,6 @@
 				</a>
 			</li>
 
-
-			<li class="nav-item start <?php echo (strtolower($this->params['controller']) == 'curriculos') ? 'active open' : '' ?>">
-				<a href="<?php echo $this->Html->url(array('controller' => 'Curriculos', 'action' => 'index')) ?>" class="nav-link nav-toggle">
-					<i class="fa fa-file-o"></i>
-					<span class="title">Currículos</span>
-					<span class="selected"></span>
-					<!-- <span class="arrow"></span> -->
-				</a>
-			</li>
-
 			<li class="nav-item start <?php echo (strtolower($this->params['controller']) == 'usuarios') ? 'active open' : '' ?>">
 				<a href="<?php echo $this->Html->url(array('controller' => 'Usuarios', 'action' => 'index')) ?>" class="nav-link nav-toggle">
 				<i class="icon-users"></i>

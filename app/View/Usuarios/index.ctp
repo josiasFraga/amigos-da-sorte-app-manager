@@ -32,10 +32,6 @@
 				<i class="font-dark"></i>
 				<span class="caption-subject font-dark bold uppercase">Usuários</span>
 			</div>
-			<div class="actions">
-				<a role="button" data-toggle="" href="<?php echo $this->Html->url(array('controller' => 'Usuarios', 'action' => 'adicionar')) ?>" class="btn btn-circle btn-default">
-					<i class="fa fa-plus"></i> Incluir Usuário </a>
-			</div>
 		</div>
 		<div class="portlet-body">
 			<div class="">
@@ -46,14 +42,30 @@
 								<input type="checkbox" class="group-checkable" data-set="#table-usuarios .checkboxes"/>
 							</th>
 							<th>Nome</th>
+							<th>País</th>
 							<th>Email</th>
+							<th>Telefone</th>
+							<th>CPF</th>
+							<th>CI</th>
 							<th>Ativo</th>
 							<th width="150px">Ações</th>
 						</tr>
 						<tr role="row" class="filter">
 							<td></td>
 							<td><input type="text" class="form-control form-filter input-sm" name="nome"></td>
+							<td>
+								
+								<select class="form-control form-filter input-sm" name="pais" autocomplete="off">
+									<option value="">[filtrar]</option>
+									<!-- <option value="7">Cancelada</option> -->
+									<option value="Brasil">Brasil</option>
+									<option value="Uruguai">Uruguai</option>
+								</select>
+							</td>
 							<td><input type="text" class="form-control form-filter input-sm" name="email"></td>
+							<td><input type="text" class="form-control form-filter input-sm" name="telefone"></td>
+							<td><input type="text" class="form-control form-filter input-sm" name="cpf"></td>
+							<td><input type="text" class="form-control form-filter input-sm" name="ci"></td>
 							<td>
 								<select type="text" class="form-control form-filter input-sm" name="ativo">
 									<option value="">Selecione ...</option>
