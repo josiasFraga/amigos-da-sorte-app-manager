@@ -64,7 +64,7 @@
 			<div class="display">
 				<div class="number">
 					<h3 class="font-blue-sharp">
-						<span data-value="0" id="count_cad_luck_numbers"></span>
+						<span data-value="0" id="count_cad_luck_numbers">0</span>
 					</h3>
 					<small>Números da sorte gerados</small>
 				</div>
@@ -79,7 +79,7 @@
 			<div class="display">
 				<div class="number">
 					<h3 class="font-purple-soft">
-						<span data-value="0" id="count_total_value"></span>
+						<span data-value="0" id="count_total_value">0</span>
 					</h3>
 					<small>Total em compras</small>
 				</div>
