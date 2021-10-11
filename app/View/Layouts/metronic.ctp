@@ -198,8 +198,8 @@
 		<script src="<?php echo $this->webroot ?>js/plugins/masks.js" type="text/javascript"></script>
 		<script src="<?php echo $this->webroot ?>js/plugins/numeral.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
-			window.api_url = '<?= $this->webroot ?>../app-restfull/';
-			//window.api_url = 'https://amigosdasorte.com/app-restfull/';
+			//window.api_url = '<?= $this->webroot ?>../app-restfull/';
+			window.api_url = 'https://amigosdasorte.com/app-restfull/';
 			window.user_token = '<?= $this->Session->read('user_token'); ?>';
 			window.user_email = '<?= $usuario_email; ?>';
 
