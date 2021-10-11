@@ -21,6 +21,15 @@
 				</a>
 			</li>
 
+			<li class="nav-item start <?php echo (strtolower($this->params['controller']) == 'cupons') ? 'active open' : '' ?>">
+				<a href="<?php echo $this->Html->url(array('controller' => 'Cupons', 'action' => 'encontrar_ganhador')) ?>" class="nav-link nav-toggle">
+					<i class="fa fa-search"></i>
+					<span class="title">Encontrar Ganhador</span>
+					<span class="selected"></span>
+					<!-- <span class="arrow"></span> -->
+				</a>
+			</li>
+
 			<li class="nav-item start <?php echo (strtolower($this->params['controller']) == 'usuarios') ? 'active open' : '' ?>">
 				<a href="<?php echo $this->Html->url(array('controller' => 'Usuarios', 'action' => 'index')) ?>" class="nav-link nav-toggle">
 				<i class="icon-users"></i>

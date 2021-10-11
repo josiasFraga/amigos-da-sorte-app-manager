@@ -2,3 +2,20 @@
 .nopadding{ padding: 0 !important; }
 .nopadding-left{ padding-left: 0 !important; }
 .nopadding-right{ padding-right: 0 !important; }
+ol.ganhadores_list{ list-style: none;}
+ol.ganhadores_list li{ padding-bottom: 10px; padding-top: 10px; margin-bottom: 15px; border-bottom: 1px solid #f7f7f7; }
+ol.ganhadores_list li:first-child{ background-color: #f7f7f7; }
+ol.ganhadores_list li h3{ }
+ol.ganhadores_list li h4{ }
+ol.ganhadores_list li h5{ }
+ol.ganhadores_list li span{ margin-right: 10px; font-size: 1.8em; color: #999; padding-left: 10px; }
+ol.ganhadores_list li span div.col-sm{ height: 100% !important;}
+ol.ganhadores_list li div.col-one{ flex-direction: column; align-items: center; justify-content: center; align-content: center; }
+ol.ganhadores_list li div.col-two{ flex-direction: column; align-items: center; justify-content: center; align-content: center; }
+ol.ganhadores_list li div.col-three{ flex-direction: column;  justify-content: center; align-content: center; padding-left: 15px }
+
+.d-flex{ display: flex !important;}
+.flex-one{ flex: 1;}
+.flex-two{ flex: 2;}
+.flex-five{ flex: 5;}
+
