@@ -33,6 +33,33 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
  	public $month_arr = ['','Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 	public $images_path = "https://orelhano.com.br/sistema/img/";
+    public $empresas = [
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0002-28"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0003-09"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0004-90"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0005-70"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0006-51"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0007-32"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0008-13"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0009-02"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0010-38"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0011-19"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0012-08"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0013-80"],
+        ["nome" => "Supermercados Righi", "cnpj" => "89.897.201/0014-61"],
+        ["nome" => "Postos Espigão", "cnpj" => "88.124.375/0001-04"],
+        ["nome" => "Postos Espigão", "cnpj" => "14.742.132/0001-01"],
+        ["nome" => "Postos Espigão", "cnpj" => "14.742.132/0002-84"],
+        ["nome" => "Postos Espigão", "cnpj" => "14.742.132/0004-46"],
+        ["nome" => "Postos Espigão", "cnpj" => "14.742.132/0003-65"],
+        ["nome" => "Postos Espigão", "cnpj" => "02.554.226/0003-21"],
+        ["nome" => "Postos Espigão", "cnpj" => "02.554.226/0004-02"],
+        ["nome" => "Postos Espigão", "cnpj" => "11.194.881/0001-45"],
+        ["nome" => "Alfe", "cnpj" => "96.037.619/0001-40"],
+        ["nome" => "Alfe", "cnpj" => "96.037.619/0002-20"],
+        ["nome" => "Alfe", "cnpj" => "96.037.619/0004-92"],
+        ['cnpj' => '11.606.188/0001-32', 'nome' => 'Teste'],
+    ];
  	
     public $components = array(
         // 'DebugKit.Toolbar',
@@ -188,7 +215,10 @@ class AppController extends Controller {
 			$menu_pessoas = $this->Session->read('menu_pessoas');
 		}
 
-		$this->set(compact('usuario_foto', 'usuario_nivel', 'favicon', 'logo', 'menu_pessoas', 'usuario_email'));
+        $empresas = $this->empresas;
+        $this->set(compact('empresas'));
+
+		$this->set(compact('usuario_foto', 'usuario_nivel', 'favicon', 'logo', 'menu_pessoas', 'usuario_email', 'empresas'));
 	}
 
 	public function dateBrEn( $data ) {

@@ -21,7 +21,7 @@
 				</a>
 			</li>
 
-			<li class="nav-item start <?php echo (strtolower($this->params['controller']) == 'cupons') ? 'active open' : '' ?>">
+			<li class="nav-item start <?php echo (strtolower($this->params['controller']) == 'cupons' && strtolower($this->params['action']) == 'encontra_ganhador') ? 'active open' : '' ?>">
 				<a href="<?php echo $this->Html->url(array('controller' => 'Cupons', 'action' => 'encontrar_ganhador')) ?>" class="nav-link nav-toggle">
 					<i class="fa fa-search"></i>
 					<span class="title">Encontrar Ganhador</span>
@@ -29,6 +29,24 @@
 					<!-- <span class="arrow"></span> -->
 				</a>
 			</li>
+
+			<li class="nav-item start <?php echo (strtolower($this->params['controller']) == 'cupons' && strtolower($this->params['action']) == 'index') ? 'active open' : '' ?>">
+				<a href="<?php echo $this->Html->url(array('controller' => 'Cupons', 'action' => 'index')) ?>" class="nav-link nav-toggle">
+					<i class="fa fa-bars"></i>
+					<span class="title">Números da Sorte</span>
+					<span class="selected"></span>
+					<!-- <span class="arrow"></span> -->
+				</a>
+			</li>
+
+		<li class="nav-item start <?php echo (strtolower($this->params['controller']) == 'nfces' && strtolower($this->params['action']) == 'index') ? 'active open' : '' ?>">
+			<a href="<?php echo $this->Html->url(array('controller' => 'Nfces', 'action' => 'index')) ?>" class="nav-link nav-toggle">
+				<i class="fa fa-bars"></i>
+				<span class="title">Notas Fiscais</span>
+				<span class="selected"></span>
+				<!-- <span class="arrow"></span> -->
+			</a>
+		</li>
 
 			<li class="nav-item start <?php echo (strtolower($this->params['controller']) == 'usuarios') ? 'active open' : '' ?>">
 				<a href="<?php echo $this->Html->url(array('controller' => 'Usuarios', 'action' => 'index')) ?>" class="nav-link nav-toggle">

@@ -6,6 +6,14 @@ class CuponsController extends AppController {
         $this->set('title_for_layout', 'Encontrar Ganhador');
 
 	}
+    public function index() {
+        $this->layout = 'metronic';
+        $this->set('title_for_layout', 'Cupons');
+        if ( $this->request->is('post') ) {
+            $this->layout = "ajax";
+            return $this->dataTable();
+        }
+    }
 
     public function encontra_ganhador($campanha_id = "", $numero = "") {
 

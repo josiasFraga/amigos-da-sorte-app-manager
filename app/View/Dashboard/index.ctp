@@ -9,23 +9,37 @@
 </style>
 <?php echo $this->Session->flash(); ?>
 
-<div class="page-head">
-	<!-- BEGIN PAGE TITLE -->
-	<div class="page-title">
-		<h1>Sistema de Gestão Amigos da Sorte
-			<small>página inicial</small>
-		</h1>
+<div class="row">
+	<div class="col-md-9">
+		
+		<div class="page-head">
+			<!-- BEGIN PAGE TITLE -->
+			<div class="page-title">
+				<h1>Sistema de Gestão Amigos da Sorte
+					<small>página inicial</small>
+				</h1>
+			</div>
+		</div>
+		<ul class="page-breadcrumb breadcrumb">
+			<li>
+				<a href="<?php echo $this->Html->url(array('controller' => 'Dashboard', 'action' => 'index')) ?>">Dashboard</a>
+				<i class="fa fa-circle"></i>
+			</li>
+			<li>
+				<span class="active">Dashboard</span>
+			</li>
+		</ul>
+
+	</div>
+	<div class="col-md-3">
+			
+		<select class="select2 form-control" name="dashboard_empresas_filtro" multiple="multiple" placeholder="empresa(s)" autocomplete="off">
+			<?php foreach($empresas as $empresa): ?>
+				<option value="<?= $empresa['cnpj'] ?>"><?= $empresa['nome'].' - '.$empresa['cnpj'] ?></option>
+			<?php endforeach; ?>
+		</select>
 	</div>
 </div>
-<ul class="page-breadcrumb breadcrumb">
-	<li>
-		<a href="<?php echo $this->Html->url(array('controller' => 'Dashboard', 'action' => 'index')) ?>">Dashboard</a>
-		<i class="fa fa-circle"></i>
-	</li>
-	<li>
-		<span class="active">Dashboard</span>
-	</li>
-</ul>
 
 <div class="row">
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -91,6 +105,7 @@
 	</div>
 </div>
 
+
 <!--<div class="row">
 
 	<div class="col-lg-12 col-xs-12 col-sm-12">
@@ -141,6 +156,9 @@
 	</div>
 </div>-->
 <?php
+$this->Html->css('/metronic/assets/global/plugins/select2/css/select2.min', array('block' => 'cssPage'));
+$this->Html->css('/metronic/assets/global/plugins/select2/css/select2-bootstrap.min', array('block' => 'cssPage'));
+$this->Html->script('/metronic/assets/global/plugins/select2/js/select2.full.min', array('block' => 'scriptBottom'));
 /*-- BEGIN PAGE LEVEL SCRYPTS --*/
 $this->Html->script('/js/Dashboard/index.js?v=1.0', array('block' => 'scriptBottom'));
 /*-- END PAGE LEVEL SCRYPTS --*/
