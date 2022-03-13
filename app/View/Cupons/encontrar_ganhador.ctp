@@ -59,7 +59,7 @@
                                         <div class="form-group">
                                             <div class="input-icon left">
                                                 <i class="fa"></i>
-                                                <select class="table-group-action-input form-control required number w-100" name="data[campanha_id]" style="width: 100%">
+                                                <select class="table-group-action-input form-control required number w-100" name="data[campanha_id]" style="width: 100%" id="campanha_id">
                                                     <option value="">Selecione...</option>
                                                     <?php foreach($campanhas as $key => $campanha){ ?>
                                                     <option value="<?php echo $campanha['Campanha']['id'] ?>"><?php echo $campanha['Campanha']['nome'] ?></option>
@@ -69,10 +69,19 @@
                                         </div>
                                     </div>
                                 </div><!-- ./row -->
-
-                                
-				
-								
+		
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<div class="input-icon left">
+												<i class="fa"></i>
+												<select class="table-group-action-input form-control required number w-100" name="data[sorteio_id]" style="width: 100%" id="sorteio_id">
+													<option value="">Selecione...</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div><!-- ./row -->
 
 							</div><!-- ./col -->
 						</div><!-- ./row -->

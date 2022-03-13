@@ -17,6 +17,14 @@ var EncontrarGanhador = function () {
 		});
     }
 
+    var handleDepDrop = function() {
+		$("#sorteio_id").depdrop({
+			depends: ['campanha_id'],
+			url: window.api_url + 'campanhas/sorteios_deep/?token=' + window.user_token + '&usuario=' + window.user_email,
+			language: 'pt-BR'
+		});
+    }
+
 	// validation using icons
 	var handleValidation = function() {
 		$("form#encontrar-ganhador button[type=submit]").click(function(e){
@@ -79,7 +87,7 @@ var EncontrarGanhador = function () {
 
 				submitHandler: function (form) {
 
-                    window.location.href = baseUrl+'Cupons/encontra_ganhador/'+$('select[name="data[campanha_id]"]').val()+"/"+$('input[name="data[numero]"]').val();
+                    window.location.href = baseUrl+'Cupons/encontra_ganhador/'+$('select[name="data[campanha_id]"]').val()+"/"+$('select[name="data[sorteio_id]"]').val()+'/'+$('input[name="data[numero]"]').val();
 					
 				}
 			});
@@ -96,6 +104,7 @@ var EncontrarGanhador = function () {
 		init: function () {
             findCampanhas();
 			handleValidation();
+			handleDepDrop();
 			initMisc();
 		}
 

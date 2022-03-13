@@ -26,6 +26,7 @@
 		<link href="<?php echo $this->webroot ?>metronic/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo $this->webroot ?>metronic/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo $this->webroot ?>metronic/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo $this->webroot ?>metronic/assets/global/plugins/dependent-dropdown-master/css/dependent-dropdown.min.css" rel="stylesheet" type="text/css" />
 		<?php echo $this->fetch('cssPage'); ?>
 		<!-- END PAGE LEVEL PLUGINS -->
 		<!-- BEGIN THEME GLOBAL STYLES -->
@@ -191,6 +192,8 @@
 		<script src="<?php echo $this->webroot ?>metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
 		<script src="<?php echo $this->webroot ?>metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
 		<script src="<?php echo $this->webroot ?>metronic/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+		<script src="<?php echo $this->webroot ?>metronic/assets/global/plugins/dependent-dropdown-master/js/dependent-dropdown.min.js" type="text/javascript"></script>
+		<script src="<?php echo $this->webroot ?>metronic/assets/global/plugins/dependent-dropdown-master/js/locales/pt-BR.js" type="text/javascript"></script>
 
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script src="<?php echo $this->webroot ?>js/plugins/numeric/jquery.numeric.min.js" type="text/javascript"></script>
@@ -198,8 +201,8 @@
 		<script src="<?php echo $this->webroot ?>js/plugins/masks.js" type="text/javascript"></script>
 		<script src="<?php echo $this->webroot ?>js/plugins/numeral.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
-			//window.api_url = '<?= $this->webroot ?>../app-restfull/';
-			window.api_url = 'https://amigosdasorte.com/app-restfull/';
+			window.api_url = '<?= $this->webroot ?>../app-restfull/';
+			//window.api_url = 'https://amigosdasorte.com/app-restfull/';
 			window.user_token = '<?= $this->Session->read('user_token'); ?>';
 			window.user_email = '<?= $usuario_email; ?>';
 

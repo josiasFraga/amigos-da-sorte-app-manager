@@ -35,6 +35,7 @@
 
 <script type="text/javascript">
 	window.campanha_id = '<?= $campanha_id; ?>';
+	window.sorteio_id = '<?= $sorteio_id; ?>';
 	window.numero_sorteado = '<?= $numero; ?>';
 </script>
 <?php
