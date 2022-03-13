@@ -1,15 +1,40 @@
-var Adicionar = function () {
+var ExportarListagem = function () {
+
+    var findCampanhas = function() {
+        $.get(window.api_url + 'campanhas/lista/?token=' + window.user_token + '&usuario=' + window.user_email,{},function(data){
+			if ( data.status != 'ok' ) {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: data.msg,
+				})
+			} else {
+                $.each(data.dados,function(index, el){
+                    $('select[name="data[campanha_id]"]').append('<option value="'+el['Campanha']['id']+'">'+el['Campanha']['nome']+'</option>');
+       
+                })
+			}
+		});
+    }
+
+    var handleDepDrop = function() {
+		$("#sorteio_id").depdrop({
+			depends: ['campanha_id'],
+			url: window.api_url + 'campanhas/sorteios_deep/?token=' + window.user_token + '&usuario=' + window.user_email,
+			language: 'pt-BR'
+		});
+    }
 
 	// validation using icons
 	var handleValidation = function() {
-		$("form#novo-usuario button[type=submit]").click(function(e){
+		$("form#exportar-listagem button[type=submit]").click(function(e){
 			e.preventDefault();
-			$('form#novo-usuario').submit();
+			$('form#exportar-listagem').submit();
 		})
 		// for more info visit the official plugin documentation:
 		// http://docs.jquery.com/Plugins/Validation
 
-			var form = $('form#novo-usuario');
+			var form = $('form#exportar-listagem');
 			var error = $('.alert-danger', form);
 			var success = $('.alert-success', form);
 			var warning = $('.alert-warning', form);
@@ -62,80 +87,61 @@ var Adicionar = function () {
 
 				submitHandler: function (form) {
 
-					var formdata = new FormData(form);
-					$("form#novo-usuario button[type=submit]").html('<i class="fa fa-spinner fa-spin"></i> Cadastrando, aguarde...').attr('disabled',true);
+					$("form#exportar-listagem button[type=submit]").html('<i class="fa fa-spinner fa-spin"></i> Exportando, aguarde...').attr('disabled',true);
 					$.ajax({
-						type: "POST",
-						data: formdata,
-						url: baseUrl+'Usuarios/adicionar',
+						type: "GET",
+						url: api_url+'Cupons/exporta_csv/?token=' + window.user_token + '&usuario=' + window.user_email + '&campanha_id=' + $('select[name="data[campanha_id]"]').val() + "&sorteio_id=" + $('select[name="data[sorteio_id]"]').val(),
 						async: true,
 						cache: false,
 						processData: false,
 						contentType: false
 					}).done(function(data){
 						if (data.status == "ok"){
-							$("form#novo-usuario .alert-success span.message").html(data.msg);
+							$("form#exportar-listagem .alert-success span.message").html(data.msg);
 							success.show();
 							error.hide();
 							warning.hide();
-							$('#outro_cadastro').show();
+                            window.open(window.api_url + '/' + data.url).focus();
 						}else if(data.status == "warning"){
-							$("form#novo-usuario .alert-warning span.message").html(data.msg);
+							$("form#exportar-listagem .alert-warning span.message").html(data.msg);
 							warning.show();
 							success.hide();
 							error.hide();
 						}else if(data.status == "erro"){
-							$("form#novo-usuario .alert-danger span.message").html(data.msg);
+							$("form#exportar-listagem .alert-danger span.message").html(data.msg);
 							warning.hide();
 							success.hide();
 							error.show();
 						}
-						$("form#novo-usuario button[type=submit]").html('<i class="fa fa-check"></i> Adicionado');
+						$("form#exportar-listagem button[type=submit]").html('<i class="fa fa-check"></i> Exportado');
 						App.scrollTo(error, -200);
 
 					}).fail(function(jqXHR, textStatus, errorThrown){
 						success.hide();
 						warning.hide();
-						$("form#novo-usuario .alert-danger span.message").html("Ocorreu um erro ao adicionar o usuário. ("+textStatus+" - "+errorThrown+")")
+						$("form#exportar-listagem .alert-danger span.message").html("Ocorreu um erro ao adicionar o usuário. ("+textStatus+" - "+errorThrown+")")
 						error.show();
-						$("foApprm#novo-usuario button[type=submit]").html('<i class="fa fa-check"></i> Adicionar').removeAttr('disabled');
+						$("form#exportar-listagem button[type=submit]").html('Exportar').removeAttr('disabled');
 						App.scrollTo(error, -200);
 					});
+
+					
 				}
 			});
 
 	}
 
 	var initMisc = function () {
-		$("select.select2").select2();
+		//$("select.select2").select2();
 	}
-
-	$(".toggle-password").click(function() {
-		$(this).toggleClass("fa-eye fa-eye-slash");
-		var input = $($(this).attr("toggle"));
-		if (input.attr("type") == "password") {
-			input.attr("type", "text");
-		} else {
-			input.attr("type", "password");
-		}
-	});
-
-	$(".checkl").click(function(e) {
-		e.preventDefault();
-		if ($(this).data('check') == 'check0') {
-			if (!$(this).children().hasClass('checked')) {
-				console.log("Checkbox is checked.");
-			} else {
-				console.log("Checkbox is unchecked.");
-			}
-		}
-	});
 
 	return {
 
 		//main function to initiate the module
 		init: function () {
+            findCampanhas();
 			handleValidation();
+			handleDepDrop();
 			initMisc();
 		}
 
@@ -144,5 +150,5 @@ var Adicionar = function () {
 }();
 
 $(document).ready(function(){
-	Adicionar.init();
+	ExportarListagem.init();
 });

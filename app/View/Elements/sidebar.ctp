@@ -30,6 +30,15 @@
 				</a>
 			</li>
 
+			<li class="nav-item start <?php echo (strtolower($this->params['controller']) == 'cupons' && strtolower($this->params['action']) == 'exportar_listagem') ? 'active open' : '' ?>">
+				<a href="<?php echo $this->Html->url(array('controller' => 'Cupons', 'action' => 'exportar_listagem')) ?>" class="nav-link nav-toggle">
+					<i class="fa fa-file-excel-o"></i>
+					<span class="title">Exportar Lista</span>
+					<span class="selected"></span>
+					<!-- <span class="arrow"></span> -->
+				</a>
+			</li>
+
 			<li class="nav-item start <?php echo (strtolower($this->params['controller']) == 'cupons' && strtolower($this->params['action']) == 'index') ? 'active open' : '' ?>">
 				<a href="<?php echo $this->Html->url(array('controller' => 'Cupons', 'action' => 'index')) ?>" class="nav-link nav-toggle">
 					<i class="fa fa-bars"></i>

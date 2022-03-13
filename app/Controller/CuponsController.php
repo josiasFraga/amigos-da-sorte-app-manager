@@ -26,4 +26,11 @@ class CuponsController extends AppController {
         $this->set(compact('campanha_id', 'numero', 'sorteio_id'));
     }
 
+	public function exportar_listagem() {
+
+        $this->layout = 'metronic';
+        $this->set('title_for_layout', 'Exportar Listagem');
+
+	}
+
 }
