@@ -10,7 +10,7 @@
 <?php echo $this->Session->flash(); ?>
 
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-6">
 		
 		<div class="page-head">
 			<!-- BEGIN PAGE TITLE -->
@@ -30,6 +30,14 @@
 			</li>
 		</ul>
 
+	</div>
+	<div class="col-md-3">
+			
+		<select class="select2 form-control" name="dashboard_campanhas_filtro" multiple="multiple" placeholder="campanhas(s)" autocomplete="off">
+			<?php foreach($campanhas as $campanha): ?>
+				<option value="<?= $campanha['id'] ?>"><?= $campanha['nome'] ?></option>
+			<?php endforeach; ?>
+		</select>
 	</div>
 	<div class="col-md-3">
 			
