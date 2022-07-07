@@ -58,7 +58,7 @@ var Index = function () {
 					$('select[name=dashboard_campanhas_filtro]').append('<option value="' + el.Campanha.id + '">' + el.Campanha.nome + '</option>');
 				})
 			}
-			$('select[name=dashboard_campanhas_filtro]').select2({placeholder: 'campanhas(s)'});
+			$('select[name=dashboard_campanhas_filtro]').select2({placeholder: 'campanha(s)'});
 		});
 	}
 
