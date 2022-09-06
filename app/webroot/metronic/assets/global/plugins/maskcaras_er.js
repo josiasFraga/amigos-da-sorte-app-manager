@@ -49,7 +49,7 @@
     }
     function mhora(v){
     v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
-    v=v.replace(/(\d{2})(\d)/,"$1h$2");
+    v=v.replace(/(\d{2})(\d)/,"$1:$2");
     return v;
     }
     function mrg(v){
